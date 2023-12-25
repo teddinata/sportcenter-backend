@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGalleryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::middleware([
             // prefix: products
             Route::resource('product', ProductController::class);
             Route::resource('product-gallery', ProductGalleryController::class);
+            // user
+            Route::resource('user', UserController::class);
         });
     });
 });
