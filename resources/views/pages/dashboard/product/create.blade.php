@@ -1,0 +1,97 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Product &raquo; Create
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
+                {{-- create error message --}}
+                @if ($errors->any())
+                    <div class="bg-red-500 text-white p-4 mb-4">
+                        <div class="font-bold">Oops! Something went wrong.</div>
+                        <ul class="list-inside list-disc">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form method="POST" action="{{ route('product.store') }}" class="w-full" enctype="multipart/form-data">
+                    @csrf
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label for="name" class="sr-only block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Product Name" class="appereance-none block leading-tight focus:outline-none focus:bg-white bg-gray-100 border-2 w-full p-4 rounded-lg @error('name') focus:border-gray-500 @enderror" value="{{ old('name') }}">
+                        </div>
+
+                        <div class="w-full md:w-1/2 px-3">
+                            <label for="description" class="sr-only block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Description</label>
+                            <textarea name="description" id="description" placeholder="Product Description" class="appereance-none block leading-tight focus:outline-none focus:bg-white bg-gray-100 border-2 w-full p-4 rounded-lg @error('description') focus:border-gray-500 @enderror">{{ old('description') }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label for="price" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Price</label>
+                            <input type="number" name="price" id="price" placeholder="Product Price" class="appearance-none block w-full bg-gray-100 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        </div>
+                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <label for="stock" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Stock</label>
+                            <input type="number" name="stock" id="stock" placeholder="Product Stock" class="appearance-none block w-full bg-gray-100 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        </div>
+
+
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full md:w-1/2 px-3">
+                            <label for="product_category_id" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Category</label>
+                            <select name="product_category_id" id="product_category_id" class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="">Select Category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="w-full md:w-1/2 px-3">
+                            <label for="status" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Status</label>
+                            <select name="status" id="status" class="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="1">Available</option>
+                                <option value="0">Unavailable</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label for="tags" class="sr-only block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Tags</label>
+                            <input type="text" name="tags" id="tags" placeholder="Product Tags" class="appereance-none block leading-tight focus:outline-none focus:bg-white bg-gray-100 border-2 w-full p-4 rounded-lg @error('tags') focus:border-gray-500 @enderror" value="{{ old('tags') }}">
+                            <p class="text-gray-600 text-xs italic">Comma separated, e.g: tag1, tag2, tag3</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3">
+                            <label for="size" class="sr-only block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Size</label>
+                            <input type="text" name="size" id="size" placeholder="Product Size" class="appereance-none block leading-tight focus:outline-none focus:bg-white bg-gray-100 border-2 w-full p-4 rounded-lg @error('size') focus:border-gray-500 @enderror" value="{{ old('size') }}">
+                            <p class="text-gray-600 text-xs italic">Optional</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Add more fields for the product model here -->
+
+                    <div class="flex flex-wrap -mx-3 mb-6">
+                        <div class="w-full px-3 text-right">
+                            <button type="submit" class="bg-green-500 text-white px-4 py-3 rounded font-medium w-full">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

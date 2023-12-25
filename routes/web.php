@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,22 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // prefix: dashhboard
+    Route::prefix('dashboard')->group(function () {
+        // name: dashboard
+
+
+        Route::middleware(['admin'])->group(function (){
+            Route::name('dashboard')->group(function () {
+                // get: dashboard
+                Route::get('/', function () {
+                    return view('dashboard');
+                });
+            });
+            // prefix: product-categories
+            Route::resource('category', ProductCategoryController::class);
+            // prefix: products
+            Route::resource('product', ProductController::class);
+        });
+    });
 });
