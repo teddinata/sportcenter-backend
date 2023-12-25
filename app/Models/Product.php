@@ -36,15 +36,19 @@ class Product extends Model
      */
     public function galleries()
     {
-        return $this->hasMany(ProductImage::class, 'product_id', 'id');
+        return $this->hasMany(ProductGallery::class, 'product_id', 'id');
     }
 
     // product sizes pivot
+    // public function sizes()
+    // {
+    //     return $this->belongsToMany(Size::class, 'product_sizes', 'product_id', 'size_id');
+    // }
+
     public function sizes()
     {
-        return $this->belongsToMany(Size::class, 'product_sizes', 'product_id', 'size_id');
+        return $this->belongsToMany(Size::class, 'product_sizes')->withPivot('stock');
     }
-
     // product size
     // public function productSizes()
     // {

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Size extends Model
 {
@@ -23,8 +24,12 @@ class Size extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    // public function products()
+    // {
+    //     return $this->belongsToMany(Product::class, 'product_sizes', 'size_id', 'product_id');
+    // }
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_sizes', 'size_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'product_sizes')->withPivot('stock');
     }
 }
