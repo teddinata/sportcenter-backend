@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::middleware([
             Route::resource('category', ProductCategoryController::class);
             // prefix: products
             Route::resource('product', ProductController::class);
+            Route::resource('product-gallery', ProductGalleryController::class);
         });
     });
 });
