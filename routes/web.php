@@ -49,6 +49,8 @@ Route::middleware([
             Route::resource('user', UserController::class);
             Route::resource('size', SizeController::class);
             Route::resource('product_size', ProductSizeController::class);
+
+
         });
     });
 });

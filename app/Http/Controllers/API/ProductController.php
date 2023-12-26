@@ -24,7 +24,7 @@ class ProductController extends Controller
         $category = $request->input('category');
 
         if ($id) {
-            $product = Product::with('productCategory', 'galleries')->find($id);
+            $product = Product::with('productCategory', 'galleries', 'sizes')->find($id);
 
             if ($product) {
                 return ResponseFormatter::success(
@@ -40,7 +40,7 @@ class ProductController extends Controller
             }
         }
 
-        $product = Product::with('productCategory', 'galleries');
+        $product = Product::with('productCategory', 'galleries', 'sizes');
 
         if ($name) {
             $product->where('name', 'like', '%' . $name . '%');

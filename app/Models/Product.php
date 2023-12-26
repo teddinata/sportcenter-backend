@@ -54,4 +54,14 @@ class Product extends Model
     // {
     //     return $this->hasMany(ProductSize::class, 'product_id', 'id');
     // }
+
+    /**
+     * Get all of the transactionItems for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function details()
+    {
+        return $this->hasMany(TransactionDetail::class, 'product_id', 'id');
+    }
 }

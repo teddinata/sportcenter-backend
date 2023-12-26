@@ -30,6 +30,10 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
         Route::get('user', [App\Http\Controllers\API\AuthController::class, 'profile']);
         Route::post('user', [App\Http\Controllers\API\AuthController::class, 'updateProfile']);
+
+        // transaction
+        Route::post('checkout', [App\Http\Controllers\API\TransactionController::class, 'checkout']);
+        Route::get('transactions', [App\Http\Controllers\API\TransactionController::class, 'index']);
     });
 
 });

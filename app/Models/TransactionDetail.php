@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TransactionDetail extends Model
 {
@@ -16,7 +17,7 @@ class TransactionDetail extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'transaction_id', 'product_id', 'user_id', 'subtotal',  'quantity'
+        'transaction_id', 'product_id', 'user_id', 'subtotal',  'quantity', 'size_id'
     ];
 
     /**
@@ -26,7 +27,7 @@ class TransactionDetail extends Model
      */
     public function product()
     {
-        return $this->hasOne(Product::class, 'product_id', 'id');
+        return $this->hasOne(Product::class, 'id', 'product_id');
     }
 
     /**
@@ -47,5 +48,15 @@ class TransactionDetail extends Model
     public function user()
     {
         return $this->hasOne(Users::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get the size that owns the TransactionDetail
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function size()
+    {
+        return $this->hasOne(Size::class, 'size_id', 'id');
     }
 }

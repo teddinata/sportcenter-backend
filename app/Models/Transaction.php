@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
 {
@@ -15,7 +16,8 @@ class Transaction extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'users_id',  'shipping_price', 'total_price', 'status', 'invoice_code', 'payment_url', 'payment_method', 'notes'
+        'users_id',  'shipping_price', 'total_price', 'status', 'invoice_code', 'payment_url',
+        'payment_method', 'notes', 'unique_code', 'address'
     ];
 
     /**
@@ -35,6 +37,6 @@ class Transaction extends Model
      */
     public function details()
     {
-        return $this->hasMany(TransactionDetail::class, 'transactions_id', 'id');
+        return $this->hasMany(TransactionDetail::class, 'transaction_id', 'id');
     }
 }
