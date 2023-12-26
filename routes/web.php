@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductGalleryController;
 use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,7 @@ Route::middleware([
             Route::resource('user', UserController::class);
             Route::resource('size', SizeController::class);
             Route::resource('product_size', ProductSizeController::class);
+            Route::resource('transactions', TransactionController::class);
 
 
         });

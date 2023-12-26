@@ -14,6 +14,7 @@
         <!--- Tambahkan setelah app.css --->
         <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
         <style>
             /*Form fields*/
             .dataTables_wrapper select,
@@ -81,6 +82,7 @@
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> --}}
+        <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     </head>
     <body class="font-sans antialiased">
         <x-banner />

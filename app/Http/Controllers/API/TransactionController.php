@@ -86,7 +86,7 @@ class TransactionController extends Controller
                 'notes' => $request->notes,
                 'payment_method' => $request->payment_method,
                 'shipping_price' => $request->shipping_price,
-                'total_price' => 0,
+                'total_price' => $request->total_price,
                 'status' => 'PENDING',
             ]);
 
