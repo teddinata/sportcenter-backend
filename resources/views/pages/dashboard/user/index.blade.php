@@ -40,7 +40,7 @@
                         render: function(last_login) {
                             // if not null then format date
                             if (last_login) {
-                                return moment(last_login).format('DD MMMM YYYY');
+                                return moment(last_login).format('DD MMMM YYYY, HH:mm:ss');
                             } else {
                                 return '-';
                             }

@@ -37,11 +37,11 @@ class TransactionController extends Controller
             })
             ->addColumn('action', function($trx) {
                 return '
-                <a href="'.route('transactions.show', $trx->id).'" class="inline-block  bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-eye"></i></a>
+                <a href="'.route('transactions.show', $trx->id).'" class="inline-block bg-indigo-500 hover:bg-indigo-700 text-white font-bold px-2 py-1 m-1 rounded-md select-none ease focus:outline-none focus:shadow-outline">Edit</a>
                 <form action="'.route('transactions.destroy', $trx->id).'" method="POST" class="inline-block" style="margin: 0; padding: 0;" onsubmit="return confirm(\'Are you sure you want to delete this item?\');">
                     '.csrf_field().'
                     '.method_field('DELETE').'
-                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 m-1 rounded-md select-none ease focus:outline-none focus:shadow-outline"><i class="fas fa-trash"></i></button>
+                    <button type="submit" class="inline-block bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 m-1 rounded-md select-none ease focus:outline-none focus:shadow-outline">Delete</button>
                 </form>
                 ';
             })
