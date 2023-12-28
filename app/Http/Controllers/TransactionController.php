@@ -41,7 +41,7 @@ class TransactionController extends Controller
                 <form action="'.route('transactions.destroy', $trx->id).'" method="POST" class="inline-block" style="margin: 0; padding: 0;" onsubmit="return confirm(\'Are you sure you want to delete this item?\');">
                     '.csrf_field().'
                     '.method_field('DELETE').'
-                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-trash"></i></button>
+                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold px-2 py-1 m-1 rounded-md select-none ease focus:outline-none focus:shadow-outline"><i class="fas fa-trash"></i></button>
                 </form>
                 ';
             })
